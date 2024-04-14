@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AppRoutingRoutingModule } from './app-routing-routing.module';
-
+export const routes: Routes = [{
+  path: '', pathMatch: 'full', redirectTo: 'courses'
+},
+{
+  path: 'courses', loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule)
+}
+];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    AppRoutingRoutingModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
