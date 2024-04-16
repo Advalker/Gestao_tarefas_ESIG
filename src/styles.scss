@@ -1,21 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importe o Angular Material e defina o tema principal */
 @use '@angular/material' as mat;
 @include mat.core();
 
-$custom-app-primary: mat.define-palette(matrey-palette);
-$custom-app-secondaty: mat.define-palette(mat.$indigo-palette, A200, A400, 700);
+/* Defina suas paletas de cores personalizadas */
+$custom-app-primary: mat.define-palette(mat.$green-palette);
+$custom-app-secondary: mat.define-palette(mat.$pink-palette, A200, A400, 700);
 $custom-app-warn: mat.define-palette(mat.$red-palette);
 
+/* Defina seu tema personalizado com as paletas de cores personalizadas */
 $custom-theme: mat.define-light-theme((
   color: (
     primary: $custom-app-primary,
-    accent: $custom-app-secondaty,
-    warn: $custom-app-secondaty,
+    accent: $custom-app-secondary,
+    warn: $custom-app-warn,
   )
- ));
+));
 
+/* Aplique o tema personalizado a todos os componentes */
 @include mat.all-component-themes($custom-theme);
-@include mat.core-theme($custom-theme);
 
+/* Defina estilos globais */
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
